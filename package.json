@@ -17,7 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.2.0",
-    "@harveyr/github-actions-kit": "0.0.5"
+    "@harveyr/github-actions-kit": "0.0.6"
   },
   "devDependencies": {
     "@types/jest": "^24.0.22",

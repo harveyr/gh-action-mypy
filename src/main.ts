@@ -31,7 +31,10 @@ async function postAnnotations(arg: PostAnnotationArg): Promise<void> {
 }
 
 async function run(): Promise<void> {
-  const githubToken = kit.getInputSafe('github_token')
+  const githubToken = kit.getInputSafe('github-token', {
+    required: false,
+    allowAltFormat: true,
+  })
 
   const patterns = kit
     .getInputSafe('patterns')
@@ -43,7 +46,7 @@ async function run(): Promise<void> {
       return Boolean(token)
     })
 
-  const mypyPath = kit.getInputSafe('mypy_path')
+  const mypyPath = kit.getInputSafe('mypy-path')
   const args = [
     '--show-error-codes',
     '--no-color-output',

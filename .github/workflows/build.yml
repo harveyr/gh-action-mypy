@@ -21,7 +21,7 @@ jobs:
     - uses: ./
       with:
         patterns: __tests__/assets/
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
       env:
         ACTIONS_STEP_DEBUG: 'true'
 
