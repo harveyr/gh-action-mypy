@@ -2,4 +2,4 @@
 
 
 def thing(arg: str) -> bool:
-    return "nope"
+    return bool(arg)
