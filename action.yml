@@ -2,6 +2,9 @@ name: Mypy
 description: Github Action to run mypy against specific files and report the output as annotations
 author: Harvey Rogers
 inputs:
+  github_token:
+    description: path to mypy executable
+    default: 'mypy'
   patterns:
     description: file patterns to run against
     default: '.'
