@@ -1,8 +1,8 @@
-import {MypyIssue} from './types'
+import { MypyIssue } from './types'
 
 const LINE_REGEXP = /^([\S^:]+):(\d+): (.+) \[([a-z-]+)\]$/
 
-export function parseLine(line: string):  MypyIssue | null {
+export function parseLine(line: string): MypyIssue | null {
   const match = LINE_REGEXP.exec(line)
   if (!match || match.length < 3) {
     console.log('Unmatched line: %s', line)
