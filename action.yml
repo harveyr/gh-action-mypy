@@ -1,11 +1,13 @@
-name: FIXME: Your name here
-description: FIXME: Provide a description here
-author: FIXME: Your name or organization here
+name: Mypy
+description: Github Action to run mypy against specific files and report the output as annotations
+author: Harvey Rogers
 inputs:
-  FIXME:
-  myInput:
-    description: input description here
-    default: default value if applicable
+  patterns:
+    description: file patterns to run against
+    default: '.'
+  mypy_path:
+    description: path to mypy executable
+    default: 'mypy'
 runs:
   using: node12
   main: dist/index.js

@@ -8,21 +8,19 @@ jobs:
 
     - run: npm ci
 
-    - run: npm run build
-
-    - name: Prettier
-      uses: harveyr/gh-action-prettier@releases/v1
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        patterns: src/**.ts
-
-    - name: ESLint
-      run: npx eslint src/**/**.ts __tests__/**/**.ts
-
-    - run: npm test
-
-    # zeit is a documented alternative to publishing node_modules:
-    # https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-a-javascript-action
     - run: npm run dist
 
     - uses: ./
+
+    - run: npx prettier --list-different src/**/**.ts
+
+    - run: npx eslint src/**/**.ts __tests__/**/**.ts
+
+    - run: npm run build
+
+    - run: npm test
+
+    - uses: harveyr/gh-action-publish@releases/v0
+      with:
+        dirs: dist
+      if: contains(github.ref, 'refs/heads/versions/' )
