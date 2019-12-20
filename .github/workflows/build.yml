@@ -21,6 +21,8 @@ jobs:
     - uses: ./
       with:
         patterns: __tests__/assets/
+      env:
+        ACTIONS_STEP_DEBUG: 'true'
 
     - run: npx prettier --list-different src/**/**.ts
 
