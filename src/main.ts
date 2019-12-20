@@ -51,7 +51,6 @@ async function run(): Promise<void> {
 
   console.log('%s issues found', issues.length)
 
-  console.log('FIXME: githubToken', githubToken)
   if (!githubToken) {
     console.log('No github token provided. Not posting check run.')
     if (issues.length) {
