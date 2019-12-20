@@ -1,9 +1,9 @@
 {
-  "name": "replace-me",
+  "name": "@harveyr/gh-action-mypy",
   "version": "0.0.0",
   "private": true,
-  "description": "FIXME: REPLACE ME",
-  "main": "lib/main.js",
+  "description": "Github Action to run mypy against specific files and report the output as annotations",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "dist": "ncc build src/main.ts -o dist",
@@ -11,12 +11,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fixme:replace.git"
+    "url": "git+https://github.com/harvey/gh-action-mypy.git"
   },
-  "author": "FIXME:",
+  "author": "Harvey Rogers",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.0"
+    "@actions/core": "^1.2.0",
+    "@harveyr/github-actions-kit": "0.0.6"
   },
   "devDependencies": {
     "@types/jest": "^24.0.22",

@@ -8,21 +8,32 @@ jobs:
 
     - run: npm ci
 
-    - run: npm run build
+    - run: npm run dist
 
-    - name: Prettier
-      uses: harveyr/gh-action-prettier@releases/v1
+    - name: Setup python
+      uses: actions/setup-python@v1
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        patterns: src/**.ts
+        python-version: '3.7'
 
-    - name: ESLint
-      run: npx eslint src/**/**.ts __tests__/**/**.ts
+    - name: Install mypy
+      run: pip install mypy
+
+    - uses: ./
+      with:
+        patterns: __tests__/assets/
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+      env:
+        ACTIONS_STEP_DEBUG: 'true'
+
+    - run: npx prettier --list-different src/**/**.ts
+
+    - run: npx eslint src/**/**.ts __tests__/**/**.ts
+
+    - run: npm run build
 
     - run: npm test
 
-    # zeit is a documented alternative to publishing node_modules:
-    # https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-a-javascript-action
-    - run: npm run dist
-
-    - uses: ./
+    - uses: harveyr/gh-action-publish@releases/v0
+      with:
+        dirs: dist
+      if: contains(github.ref, 'refs/heads/versions/' )
