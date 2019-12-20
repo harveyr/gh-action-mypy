@@ -1,0 +1,25 @@
+default_language_version:
+  python: python3
+repos:
+  - repo: https://github.com/prettier/prettier
+    rev: 1.19.1
+    hooks:
+      - id: prettier
+        exclude: lib|node_modules
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: v6.6.0
+    hooks:
+      - id: eslint
+        args: [--fix]
+        additional_dependencies:
+          - eslint@6.6.0
+          - typescript@3.7.2
+          - '@typescript-eslint/eslint-plugin@2.6.1'
+          - '@typescript-eslint/parser@2.6.1'
+          - eslint-config-prettier@6.5.0
+          - eslint-plugin-import@2.16.0
+        # remove default javascript-only filter so we can lint typescript
+        # https://github.com/pre-commit/mirrors-eslint/blob/master/.pre-commit-hooks.yaml
+        types: []
+        files: '.*\.(ts)$'
+        exclude: lib|node_modules
