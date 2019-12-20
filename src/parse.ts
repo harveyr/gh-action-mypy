@@ -9,8 +9,6 @@ export function parseLine(line: string):  MypyIssue | null {
     return null
   }
 
-  console.log('match', match)
-
   return {
     path: match[1],
     line: parseInt(match[2], 10),

@@ -10,6 +10,8 @@ interface PostAnnotationArg {
 }
 
 async function postAnnotations(arg: PostAnnotationArg): Promise<void> {
+  core.debug(`Posting ${arg.issues.length} annotations`)
+
   const {githubToken, issues} = arg
   await kit.postCheckRun({
     githubToken,
@@ -46,6 +48,8 @@ async function run(): Promise<void> {
   const issues = lines.map(parseLine).filter(issue => {
     return Boolean(issue)
   }) as MypyIssue[]
+
+  console.log('%s issues found', issues.length)
 
   if (!githubToken) {
     console.log('No github token provided. Not posting check run.')
