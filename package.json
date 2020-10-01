@@ -16,7 +16,7 @@
   "author": "Harvey Rogers",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.0",
+    "@actions/core": "^1.2.6",
     "@harveyr/github-actions-kit": "0.0.6"
   },
   "devDependencies": {
